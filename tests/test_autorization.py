@@ -1,10 +1,19 @@
 from playwright.sync_api import expect, Page
 import pytest
 
+creds = {
+    ("user.name@gmail.com", "password"): "Invalid data",
+    ("user.name@gmail.com", " "): "Invalid pass",
+    (" ", "password"): "Invalid email"
+}
 
+
+@pytest.mark.parametrize('email, password',
+                         creds.keys(),
+                         ids=creds.values())
 @pytest.mark.regression
 @pytest.mark.registration
-def test_wrong_email_or_password_authorization(chromium_page: Page):
+def test_wrong_email_or_password_authorization(chromium_page: Page, email: str, password: str):
 
     chromium_page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
 
