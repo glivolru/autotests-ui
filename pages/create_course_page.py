@@ -20,11 +20,13 @@ class CreateCoursePage(BasePage):
         self.preview_img_upload_description = page.get_by_test_id(
             'create-course-preview-image-upload-widget-info-description-text'
         )
-        self.preview_img_upload_button = page.get_by_test_id('create-course-preview-image-upload-widget-upload-button')
+        self.preview_img_upload_button = page.get_by_test_id(
+            'create-course-preview-image-upload-widget-upload-button'
+        ).locator('input[type="file"]')
         self.preview_img_remove_button = page.get_by_test_id('create-course-preview-image-upload-widget-remove-button')
 
         self.create_course_title_input = page.get_by_test_id(
-            'MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-1ruewdp'
+            'create-course-form-title-input'
         ).locator('input')
         self.create_course_estimated_time_input = page.get_by_test_id(
             'create-course-form-estimated-time-input'
